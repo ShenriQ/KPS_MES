@@ -63,64 +63,64 @@ class Access extends Application_controller {
 					$error_msg = lang('c_541');
 				} else {
 
-					$glabel_data = "INSERT INTO global_labels (id, type, name, bg_color_hex, is_default, is_active, target_source_id) VALUES
-					(NULL, 'PROJECT', 'NEW', 'FFEB3B', 1, 1, [TARGET_SOURCE]),
-					(NULL, 'PROJECT', 'CANCELED', 'FF5722', 0, 1, [TARGET_SOURCE]),
-					(NULL, 'PROJECT', 'INPROGRESS', '8BC34A', 0, 1, [TARGET_SOURCE]),
-					(NULL, 'PROJECT', 'PAUSED', 'FF5722', 0, 1, [TARGET_SOURCE]),
-					(NULL, 'TASK', 'NEW', 'F5BA42', 1, 1, [TARGET_SOURCE]),
-					(NULL, 'TASK', 'CONFIRMED', 'B276D8', 0, 1, [TARGET_SOURCE]),
-					(NULL, 'TASK', 'DUPLICATE', '31353C', 0, 1, [TARGET_SOURCE]),
-					(NULL, 'TASK', 'WONT FIX', '7277D5', 0, 1, [TARGET_SOURCE]),
-					(NULL, 'TASK', 'ASSIGNED', 'D9434E', 0, 1, [TARGET_SOURCE]),
-					(NULL, 'TASK', 'BLOCKED', 'E3643E', 0, 1, [TARGET_SOURCE]),
-					(NULL, 'TASK', 'IN PROGRESS', 'A5ADB8', 0, 1, [TARGET_SOURCE]),
-					(NULL, 'TASK', 'FIXED', 'F59B43', 0, 1, [TARGET_SOURCE]),
-					(NULL, 'TASK', 'REOPENED', '4B8CDC', 0, 1, [TARGET_SOURCE]),
-					(NULL, 'TASK', 'VERIFIED', 'B1C252', 0, 1, [TARGET_SOURCE]),
-					(NULL, 'TICKET', 'NEW', 'FFEB3B', 1, 1, [TARGET_SOURCE]),
-					(NULL, 'TICKET', 'INPROGRESS', '8BC34A', 0, 1, [TARGET_SOURCE]),
-					(NULL, 'TICKET', 'PAUSED', 'FF5722', 0, 1, [TARGET_SOURCE]),
-					(NULL, 'TICKET', 'DONE', 'B276D8', 0, 1, [TARGET_SOURCE]);";
+					$glabel_data = "INSERT INTO global_labels ( type, name, bg_color_hex, is_default, is_active, target_source_id) VALUES
+					('PROJECT', 'NEW', 'FFEB3B', 1, 1, [TARGET_SOURCE]),
+					('PROJECT', 'CANCELED', 'FF5722', 0, 1, [TARGET_SOURCE]),
+					('PROJECT', 'INPROGRESS', '8BC34A', 0, 1, [TARGET_SOURCE]),
+					('PROJECT', 'PAUSED', 'FF5722', 0, 1, [TARGET_SOURCE]),
+					('TASK', 'NEW', 'F5BA42', 1, 1, [TARGET_SOURCE]),
+					('TASK', 'CONFIRMED', 'B276D8', 0, 1, [TARGET_SOURCE]),
+					('TASK', 'DUPLICATE', '31353C', 0, 1, [TARGET_SOURCE]),
+					('TASK', 'WONT FIX', '7277D5', 0, 1, [TARGET_SOURCE]),
+					('TASK', 'ASSIGNED', 'D9434E', 0, 1, [TARGET_SOURCE]),
+					('TASK', 'BLOCKED', 'E3643E', 0, 1, [TARGET_SOURCE]),
+					('TASK', 'IN PROGRESS', 'A5ADB8', 0, 1, [TARGET_SOURCE]),
+					('TASK', 'FIXED', 'F59B43', 0, 1, [TARGET_SOURCE]),
+					('TASK', 'REOPENED', '4B8CDC', 0, 1, [TARGET_SOURCE]),
+					('TASK', 'VERIFIED', 'B1C252', 0, 1, [TARGET_SOURCE]),
+					('TICKET', 'NEW', 'FFEB3B', 1, 1, [TARGET_SOURCE]),
+					('TICKET', 'INPROGRESS', '8BC34A', 0, 1, [TARGET_SOURCE]),
+					('TICKET', 'PAUSED', 'FF5722', 0, 1, [TARGET_SOURCE]),
+					('TICKET', 'DONE', 'B276D8', 0, 1, [TARGET_SOURCE]);";
 	
-					$config_data = "INSERT INTO configurations (id, category_name, name, value, target_source_id) VALUES
-					(NULL, 'mailing', 'smtp_server', 'server@example.com', [TARGET_SOURCE]),
-					(NULL, 'mailing', 'smtp_port', '101', [TARGET_SOURCE]),
-					(NULL, 'mailing', 'smtp_authenticate', '1', [TARGET_SOURCE]),
-					(NULL, 'mailing', 'smtp_username', 'username', [TARGET_SOURCE]),
-					(NULL, 'mailing', 'smtp_password', 'password', [TARGET_SOURCE]),
-					(NULL, 'mailing', 'smtp_secure_connection', 'no', [TARGET_SOURCE]),
-					(NULL, 'mailing', 'smtp_reply_from_email', 'noreply@example.com', [TARGET_SOURCE]),
-					(NULL, 'mailing', 'smtp_from_name', 'PROMS', [TARGET_SOURCE]),
-					(NULL, 'mailing', 'smtp_from_email', 'support@example.com', [TARGET_SOURCE]),
-					(NULL, 'system', 'site_name', 'Project Management System', [TARGET_SOURCE]),
-					(NULL, 'system', 'contact_email', 'contact@example.com', [TARGET_SOURCE]),
-					(NULL, 'system', 'default_currency', '$', [TARGET_SOURCE]),
-					(NULL, 'system', 'items_per_page', '10', [TARGET_SOURCE]),
-					(NULL, 'system', 'calendar_google_api_key', NULL, [TARGET_SOURCE]),
-					(NULL, 'system', 'calendar_google_event_address', NULL, [TARGET_SOURCE]),
-					(NULL, 'system', 'paypal_email', 'paypal_sandbox@example.com', [TARGET_SOURCE]),
-					(NULL, 'system', 'paypal_sandbox', 'yes', [TARGET_SOURCE]),
-					(NULL, 'system', 'paypal_currency_code', 'USD', [TARGET_SOURCE]),
-					(NULL, 'system', 'stripe_secret_key', 'sk_live_lV5nITIlIlzvSZmkfunl5bH3', [TARGET_SOURCE]),
-					(NULL, 'system', 'stripe_publishable_key', 'pk_live_ogI79OxdoS6YUGWLkkAVwbC3', [TARGET_SOURCE]),
-					(NULL, 'system', 'stripe_currency_code', 'USD', [TARGET_SOURCE]),
-					(NULL, 'system', 'offline_bank_name', 'Sample Bank', [TARGET_SOURCE]),
-					(NULL, 'system', 'offline_bank_account', 'XXXXXX00000000', [TARGET_SOURCE]),
-					(NULL, 'system', 'invoice_color', '#00A65A', [TARGET_SOURCE]),
-					(NULL, 'system', 'send_due_date_invoice_reminder_before_days', '1', [TARGET_SOURCE]),
-					(NULL, 'system', 'send_due_date_invoice_reminder_after_days', '1', [TARGET_SOURCE]),
-					(NULL, 'system', 'logo_text', 'PROMS', [TARGET_SOURCE]);";
+					$config_data = "INSERT INTO configurations ( category_name, name, value, target_source_id) VALUES
+					('mailing', 'smtp_server', 'server@example.com', [TARGET_SOURCE]),
+					('mailing', 'smtp_port', '101', [TARGET_SOURCE]),
+					('mailing', 'smtp_authenticate', '1', [TARGET_SOURCE]),
+					('mailing', 'smtp_username', 'username', [TARGET_SOURCE]),
+					('mailing', 'smtp_password', 'password', [TARGET_SOURCE]),
+					('mailing', 'smtp_secure_connection', 'no', [TARGET_SOURCE]),
+					('mailing', 'smtp_reply_from_email', 'noreply@example.com', [TARGET_SOURCE]),
+					('mailing', 'smtp_from_name', 'PROMS', [TARGET_SOURCE]),
+					('mailing', 'smtp_from_email', 'support@example.com', [TARGET_SOURCE]),
+					('system', 'site_name', 'Project Management System', [TARGET_SOURCE]),
+					('system', 'contact_email', 'contact@example.com', [TARGET_SOURCE]),
+					('system', 'default_currency', '$', [TARGET_SOURCE]),
+					('system', 'items_per_page', '10', [TARGET_SOURCE]),
+					('system', 'calendar_google_api_key', NULL, [TARGET_SOURCE]),
+					('system', 'calendar_google_event_address', NULL, [TARGET_SOURCE]),
+					('system', 'paypal_email', 'paypal_sandbox@example.com', [TARGET_SOURCE]),
+					('system', 'paypal_sandbox', 'yes', [TARGET_SOURCE]),
+					('system', 'paypal_currency_code', 'USD', [TARGET_SOURCE]),
+					('system', 'stripe_secret_key', 'sk_live_lV5nITIlIlzvSZmkfunl5bH3', [TARGET_SOURCE]),
+					('system', 'stripe_publishable_key', 'pk_live_ogI79OxdoS6YUGWLkkAVwbC3', [TARGET_SOURCE]),
+					('system', 'stripe_currency_code', 'USD', [TARGET_SOURCE]),
+					('system', 'offline_bank_name', 'Sample Bank', [TARGET_SOURCE]),
+					('system', 'offline_bank_account', 'XXXXXX00000000', [TARGET_SOURCE]),
+					('system', 'invoice_color', '#00A65A', [TARGET_SOURCE]),
+					('system', 'send_due_date_invoice_reminder_before_days', '1', [TARGET_SOURCE]),
+					('system', 'send_due_date_invoice_reminder_after_days', '1', [TARGET_SOURCE]),
+					('system', 'logo_text', 'PROMS', [TARGET_SOURCE]);";
 
-					$ticket_types_data = "INSERT INTO ticket_types (id, name, is_active, target_source_id) 
-					VALUES (NULL, 'General Support', '1', [TARGET_SOURCE]);";
+					$ticket_types_data = "INSERT INTO ticket_types ( name, is_active, target_source_id) 
+					VALUES ('General Support', '1', [TARGET_SOURCE]);";
 					
 					try {
 	
 						$this->db->trans_begin();
 	
-						$this->db->query("INSERT INTO target_sources (id, name, subscription_id, expire_date, storage_limit, projects_limit, users_limit, created_at, updated_at) 
-						VALUES (NULL, ".$this->db->escape($workspace_name).", ".$subscription_id.", (GETDATE() + INTERVAL 30 DAY), ".$select_package->getMaxStorage().", ".$select_package->getMaxProjects().", ".$select_package->getMaxUsers().", GETDATE(), GETDATE())");
+						$this->db->query("INSERT INTO target_sources (name, subscription_id, expire_date, storage_limit, projects_limit, users_limit, created_at, updated_at) 
+						VALUES ( ".$this->db->escape($workspace_name).", ".$subscription_id.", (DATEADD(day, 30, GETDATE())), ".$select_package->getMaxStorage().", ".$select_package->getMaxProjects().", ".$select_package->getMaxUsers().", GETDATE(), GETDATE())");
 						
 						$source_id = $this->db->insert_id();
 						

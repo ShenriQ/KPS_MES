@@ -119,8 +119,8 @@ class Subscribe extends Application_controller {
 							
 						$this->db->trans_begin();
 	
-						$this->db->query("INSERT INTO ipayment_orders (id, payment_method, is_verified, payer_name, payer_email, payment_status, receiver_email, send_amount, payment_fee, tax, txn_id, currency, raw_data, order_message, created_at, created_by_id, target_source_id) 
-						VALUES (NULL, 'paypal', '0', ".$this->db->escape($payer_name).", '".$payer_email."', 'completed', '".$receiver_email."', '".$amount."', '".$mc_fee."', '".$tax."', '".$txn_id."', '".$mc_currency."', ".$this->db->escape($raw).", ".$this->db->escape($item_name).", GETDATE(), '".$user_record->id."', '".$user_record->target_source_id."');");
+						$this->db->query("INSERT INTO ipayment_orders ( payment_method, is_verified, payer_name, payer_email, payment_status, receiver_email, send_amount, payment_fee, tax, txn_id, currency, raw_data, order_message, created_at, created_by_id, target_source_id) 
+						VALUES ('paypal', '0', ".$this->db->escape($payer_name).", '".$payer_email."', 'completed', '".$receiver_email."', '".$amount."', '".$mc_fee."', '".$tax."', '".$txn_id."', '".$mc_currency."', ".$this->db->escape($raw).", ".$this->db->escape($item_name).", GETDATE(), '".$user_record->id."', '".$user_record->target_source_id."');");
 
 						$this->db->query("UPDATE target_sources SET 
 						subscription_id = '".$subscription_id."', 
