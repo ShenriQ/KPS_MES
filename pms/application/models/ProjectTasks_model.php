@@ -9,56 +9,86 @@ class ProjectTasks_model extends Application_model {
     }
 
 	public function getByUser(User $user, $include_trashed = false, $include_completed = false, $limit = null, $offset = null) {
-
-		return $this->find(array('conditions' => array('is_trashed <= ? AND completed_at '.($include_completed ? '>=' : '=').' ? AND assignee_id = ?',
-		$include_trashed, '2021-01-01T00:00:00', $user->getId()),
-		'order' => 'sort_order ASC, id DESC',
-		'limit' => $limit,
-        'offset' => $offset
-		));
-						
+		if($include_completed) {
+			return $this->find(array('conditions' => array('is_trashed <= ?  AND assignee_id = ?',
+			$include_trashed , $user->getId()),
+			'order' => 'sort_order ASC, id DESC',
+			'limit' => $limit,
+			'offset' => $offset
+			));
+		}
+		else {
+			return $this->find(array('conditions' => array('is_trashed <= ? AND completed_at IS NULL AND assignee_id = ?',
+			$include_trashed , $user->getId()),
+			'order' => 'sort_order ASC, id DESC',
+			'limit' => $limit,
+			'offset' => $offset
+			));
+		}				
 	}
 
 	public function getByProjectTaskList(ProjectTaskList $project_task_list, $include_completed = false, $include_trashed = false) {
-	
-		return $this->find(array('conditions' => array('is_trashed <= ? AND task_list_id = ? AND completed_at '.($include_completed ? '>=' : '=').' ?', 
-		$include_trashed, $project_task_list->getId(), '2021-01-01T00:00:00'), 'order' => 'sort_order ASC, id DESC'));
+		if($include_completed) { 
+			return $this->find(array('conditions' => array('is_trashed <= ? AND task_list_id = ? ', 
+			$include_trashed, $project_task_list->getId()), 'order' => 'sort_order ASC, id DESC'));
+		}
+		else {
+			return $this->find(array('conditions' => array('is_trashed <= ? AND task_list_id = ? AND completed_at IS NULL', 
+			$include_trashed, $project_task_list->getId()), 'order' => 'sort_order ASC, id DESC'));
+		}
 	
 	}
 
 	public function getDatedByProjectTaskList(ProjectTaskList $project_task_list, $include_completed = false, $include_trashed = false) {
-	
-		return $this->find(array('conditions' => array('is_trashed <= ? AND task_list_id = ? AND completed_at '.($include_completed ? '>=' : '=').' ?  AND (start_date <> \'2021/01/01\' AND due_date <> \'2021/01/01\')', 
-		$include_trashed, $project_task_list->getId(), '2021-01-01T00:00:00'), 'order' => 'sort_order ASC, id DESC'));
-	
+		if($include_completed) {
+			return $this->find(array('conditions' => array('is_trashed <= ? AND task_list_id = ?   AND (start_date <> \'2021/01/01\' AND due_date <> \'2021/01/01\')', 
+		$include_trashed, $project_task_list->getId()), 'order' => 'sort_order ASC, id DESC'));
+		}
+		else {
+			return $this->find(array('conditions' => array('is_trashed <= ? AND task_list_id = ? AND completed_at IS NULL AND (start_date <> \'2021/01/01\' AND due_date <> \'2021/01/01\')', 
+			$include_trashed, $project_task_list->getId()), 'order' => 'sort_order ASC, id DESC'));
+		}
 	}
 
 	public function getByProject(Project $project, $include_completed = false, $include_trashed = false) {
-
-		return $this->find(array('conditions' => array('is_trashed <= ? AND project_id = ? AND completed_at '.($include_completed ? '>=' : '=').' ?', 
-		$include_trashed, $project->getId(), '2021-01-01T00:00:00'), 'order' => 'sort_order ASC, id DESC'));
-						
+		if($include_completed) {
+			return $this->find(array('conditions' => array('is_trashed <= ? AND project_id = ? ', 
+			$include_trashed, $project->getId()), 'order' => 'sort_order ASC, id DESC'));
+		}
+		else {
+			return $this->find(array('conditions' => array('is_trashed <= ? AND project_id = ? AND completed_at IS NULL', 
+			$include_trashed, $project->getId()), 'order' => 'sort_order ASC, id DESC'));
+		}				
 	}
 	
 	public function getCompletedByProjectTaskList(ProjectTaskList $project_task_list, $include_trashed = false) {
 	
-		return $this->find(array('conditions' => array('is_trashed <= ? AND task_list_id = ? AND completed_at > ?', 
-		$include_trashed, $project_task_list->getId(), '2021-01-01T00:00:00'), 'order' => 'sort_order ASC, id DESC'));
+		return $this->find(array('conditions' => array('is_trashed <= ? AND task_list_id = ? AND completed_at IS NOT NULL', 
+		$include_trashed, $project_task_list->getId()), 'order' => 'sort_order ASC, id DESC'));
 	
 	}
 
 	public function countByProjectTaskList(ProjectTaskList $project_task_list, $include_completed = false, $include_trashed = false) {
 			
-		return $this->count(array('is_trashed <= ? AND task_list_id = ? AND completed_at '.($include_completed ? '>=' : '=').' ?', 
-		$include_trashed, $project_task_list->getId(), '2021-01-01T00:00:00'));
-
+		if($include_completed) {
+			return $this->count(array('is_trashed <= ? AND task_list_id = ? ', 
+			$include_trashed, $project_task_list->getId()));
+		}
+		else {
+			return $this->count(array('is_trashed <= ? AND task_list_id = ? AND completed_at IS NULL', 
+			$include_trashed, $project_task_list->getId()));
+		}
 	}
 
 	public function countByProject($project_ids, $include_completed = false, $include_trashed = false) {
-			
-		return $this->count(array('is_trashed <= ? AND project_id IN (?) AND completed_at '.($include_completed ? '>=' : '=').' ?', 
-		$include_trashed, $project_ids, '2021-01-01T00:00:00'));
-
+		if($include_completed){
+			return $this->count(array('is_trashed <= ? AND project_id IN (?) ', 
+		$include_trashed, $project_ids ));
+		}
+		else {
+			return $this->count(array('is_trashed <= ? AND project_id IN (?) AND completed_at IS NULL', 
+			$include_trashed, $project_ids ));
+		}
 	}
 
 	public function getByTrashed() {
@@ -66,7 +96,7 @@ class ProjectTasks_model extends Application_model {
 	}
 
 	public function getOverdues($project_ids, $assignee_ids) {
-		return $this->find(array('conditions' => array('is_trashed = ? AND completed_at = ? AND project_id IN (?) AND assignee_id IN (?) AND (due_date <> \'2021/01/01\' AND due_date < GETDATE())', false, '2021-01-01T00:00:00', $project_ids, $assignee_ids), 'order' => 'id'));
+		return $this->find(array('conditions' => array('is_trashed = ? AND completed_at IS NULL AND project_id IN (?) AND assignee_id IN (?) AND (due_date <> \'2021/01/01\' AND due_date < GETDATE())', false,  $project_ids, $assignee_ids), 'order' => 'id'));
 	}
 
 }

@@ -26,7 +26,12 @@ tpl_assign("title_for_layout", ($task_list->isNew() ? lang('c_289') : lang('c_29
 <div class="form-group">
 
 <?php if(logged_user()->isMember()) : ?>
-<label><input name="is_private" type="checkbox"<?php echo ($is_private ? ' checked="checked"' : ''); ?> /> <?php echo lang('c_122'); ?> <small class="custom-backgound-lightyellow-underline"><?php echo lang('c_123'); ?></small></label><br>
+<!-- <label>
+<input name="is_private" type="checkbox"<?php echo ($is_private ? ' checked="checked"' : ''); ?>
+<?php echo lang('c_122'); ?> <small class="custom-backgound-lightyellow-underline">
+<?php echo lang('c_123'); ?></small>
+</label>
+<br> -->
 <?php endif; ?>
 <label><input name="is_high_priority" type="checkbox"<?php echo ($is_high_priority ? ' checked="checked"' : ''); ?> /> <?php echo lang('c_333'); ?></label>
 

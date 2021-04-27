@@ -8,7 +8,7 @@ class Sysadmin extends Admin_controller {
 
 	public function index() {
 		if(logged_admin_user() instanceof IUser) {
-			redirect('admin/dashboard');
+			redirect('admin/widgets');
 		} 
 		else {
 			redirect('admin/access/login');

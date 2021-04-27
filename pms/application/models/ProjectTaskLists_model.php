@@ -50,6 +50,11 @@ class ProjectTaskList extends Application_object {
 	
 	public function moveToTrash() {
 		
+		$tasks = $this->getTasks(true, false);
+		if(isset($tasks) && is_array($tasks) && count($tasks)) {
+			foreach($tasks as $task) $task->moveToTrash();	
+		}
+
 		$this->setIsTrashed(true);
 		$this->save();
 			

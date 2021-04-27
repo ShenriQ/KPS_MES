@@ -9,7 +9,7 @@ class Access extends Admin_controller {
 	
 	public function login() {
 		
-		if(logged_admin_user() instanceof IUser) redirect('admin/dashboard');
+		if(logged_admin_user() instanceof IUser) redirect('admin/widgets');
 
 		$email = input_post_request('email');
 		tpl_assign("email", $email);
@@ -41,7 +41,7 @@ class Access extends Admin_controller {
 								Initial_Admin_Data::instance()->setLoggedUser($user, $remember, true);
 								
 								$ref = input_get_request('ref');
-								$redirect_url = $ref != '' ? base64_decode($ref) : 'admin/dashboard';
+								$redirect_url = $ref != '' ? base64_decode($ref) : 'admin/widgets';
 								
 								redirect($redirect_url);
 		
@@ -77,7 +77,7 @@ class Access extends Admin_controller {
 	
 	function forgot_password($token = null) {
 
-		if(logged_admin_user() instanceof IUser) redirect('admin/dashboard');
+		if(logged_admin_user() instanceof IUser) redirect('admin/widgets');
 
 		tpl_assign("token", $token);
 		$is_submited = input_post_request('submited') ==  'submited';
@@ -118,7 +118,7 @@ class Access extends Admin_controller {
 		} else {
 		
 			$user = $this->IUsers->getByToken($token);
-			if(is_null($user)) redirect('admin/dashboard');
+			if(is_null($user)) redirect('admin/widgets');
 
 			$password = input_post_request('new_password');
 		

@@ -39,7 +39,7 @@ echo select_box("label_id", $labels_options, $label_id, ' class="form-control"')
 
 ?>
 </div>
-
+<!-- 
 <div class="form-group">
 <?php
 
@@ -58,7 +58,7 @@ echo select_box("company_id", $companies_options, $company_id, ' class="form-con
 
 <div class="form-group">
 	<label><input name="is_visible_timelog" type="checkbox"<?php echo ($is_visible_timelog ? ' checked="checked"' : ''); ?> /> <?php echo lang('c_252'); ?> <small class="custom-backgound-lightyellow-underline"><?php echo lang('c_253'); ?></small></label>
-</div>
+</div> -->
 
 <input type="hidden" name="submited" value="submited" />
 

@@ -63,8 +63,10 @@ class Comments extends Application_controller {
 					$project_comment->setParentId($parent_object->getId());
 					
 					$project_comment->setCreatedById(logged_user()->getId());
+
+					
 					$project_comment->save();
-						
+					
 					if(isset($attach_files) && is_array($attach_files) && count($attach_files)){
 					
 						foreach($attach_files as $attach_file) {
@@ -75,6 +77,7 @@ class Comments extends Application_controller {
 					
 					if($parent_object != $project) {	
 						$this->ActivityLogs->create($project_comment, lang('c_60'), 'add', $parent_object->getIsPrivate());
+						
 					}
 					
 					$this->db->trans_commit();

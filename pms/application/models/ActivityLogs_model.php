@@ -36,8 +36,9 @@ class ActivityLogs_model extends Application_model {
 			$log->setIsPrivate($is_private);
 			$log->setIsHidden($is_hidden);
 			
+			
 			$log->save();
-
+			
 	        $this->setIsPrivateByObject($object, $is_private);
 			
 		}

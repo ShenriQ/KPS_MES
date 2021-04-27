@@ -163,7 +163,7 @@ tpl_assign("footer_for_layout", "<script>
 
 </div>
 
-<div class="row">
+<!-- <div class="row">
 	<div class="col-md-12">
 		<div class="box">
 			<div class="box-header with-border">
@@ -197,4 +197,4 @@ tpl_assign("footer_for_layout", "<script>
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->

@@ -47,7 +47,7 @@ echo (isset($title_for_layout) ? ' - '.$title_for_layout : ''); ?></title>
 
 <header class="main-header">
 
-    <a href="<?php echo base_url();?>admin/dashboard">
+    <a href="<?php echo base_url();?>admin/widgets">
       <span class="logo"><?php echo i_config_option("logo_text", "PROMS"); ?></span>
     </a>
 
@@ -98,7 +98,7 @@ echo (isset($title_for_layout) ? ' - '.$title_for_layout : ''); ?></title>
       <ul class="sidebar-menu" data-widget="tree">
 
         <!-- <li<?php echo ($this->router->fetch_class() == 'dashboard' || $this->router->fetch_class() == 'Dashboard' ? ' class="active"' : ''); ?>>
-          <a href="<?php echo get_page_base_url('admin/dashboard'); ?>"><i class="fa fa-dashboard fa-fw"></i> <span>Dashboard</span></a>
+          <a href="<?php echo get_page_base_url('admin/widgets'); ?>"><i class="fa fa-dashboard fa-fw"></i> <span>Dashboard</span></a>
         </li> -->
 
         <!-- <li<?php echo ($this->router->fetch_class() == 'subscriptions' || $this->router->fetch_class() == 'Subscriptions' ? ' class="active"' : ''); ?>>
@@ -118,9 +118,9 @@ echo (isset($title_for_layout) ? ' - '.$title_for_layout : ''); ?></title>
         <!-- <li<?php echo ($this->router->fetch_class() == 'settings' ? ' class="active"' : ''); ?>>
     			<a href="<?php echo get_page_base_url('admin/settings'); ?>"<?php echo ($this->router->fetch_class() == 'settings' ? ' class="active"' : ''); ?>><i class="fa fa-gear fa-fw"></i> <span>Settings</span></a>
 		    </li>	 -->
-        <li<?php echo ($this->router->fetch_class() == 'settings' ? ' class="active"' : ''); ?>>
+        <!-- <li<?php echo ($this->router->fetch_class() == 'settings' ? ' class="active"' : ''); ?>>
     			<a href=""<?php echo ($this->router->fetch_class() == 'settings' ? ' class="active"' : ''); ?>><i class="fa fa-gear fa-fw"></i> <span>Settings</span></a>
-		    </li>	
+		    </li>	 -->
       </ul>
 
     </section>
@@ -148,7 +148,8 @@ echo (isset($title_for_layout) ? ' - '.$title_for_layout : ''); ?></title>
   </div>
 
   <footer class="main-footer">
-    Copyright <?php echo date("Y"); ?> &copy; <strong><?php echo i_config_option("site_name", "Project Management System"); ?>.</strong> All rights reserved.
+    Copyright <?php echo date("Y"); ?> &copy; 
+    <strong>Klipspruit</strong> All rights reserved.
   </footer>
 
   <div class="control-sidebar-bg"></div>

@@ -652,7 +652,8 @@ echo (isset($title_for_layout) ? $title_for_layout : ''); ?></title>
   </div>
 
   <footer class="main-footer">
-	  Copyright <?php echo date("Y"); ?> &copy; <strong><?php echo config_option("site_name", "Project Management System"); ?>.</strong> All rights reserved.
+	  Copyright <?php echo date("Y"); ?> &copy; 
+	  <strong>Klipspruit</strong> All rights reserved.
   </footer>
 
   <div class="control-sidebar-bg"></div>

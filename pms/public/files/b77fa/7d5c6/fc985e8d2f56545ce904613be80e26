@@ -1,0 +1,5 @@
+[user]
+	name = kps_server
+	email = kps@server
+[credential]
+	helper = manager

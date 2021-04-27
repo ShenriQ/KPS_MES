@@ -616,7 +616,7 @@ echo (isset($title_for_layout) ? $title_for_layout : ''); ?></title>
 				  <li<?php echo (isset($active_tab) && $active_tab == "tickets" ? ' class="active"': ''); ?>><a href="<?php echo get_page_base_url($project->getObjectURL('tickets')); ?>" role="tab" class="custom-cursor-pointer"><?php echo lang('c_295'); ?></a></li>
 				  <li<?php echo (isset($active_tab) && $active_tab == "gantt" ? ' class="active"': ''); ?>><a href="<?php echo get_page_base_url($project->getObjectURL('gantt')); ?>" role="tab" class="custom-cursor-pointer"><?php echo lang('c_414'); ?></a></li>
 				  <?php if(logged_user()->isMember() || (!logged_user()->isMember() && $project->getIsTimelogVisible())) : ?><li<?php echo (isset($active_tab) && $active_tab == "timesheet" ? ' class="active"': ''); ?>><a href="<?php echo get_page_base_url($project->getObjectURL('timesheet')); ?>" role="tab" class="custom-cursor-pointer"><?php echo lang('c_302'); ?><?php echo (!$project->getIsTimelogVisible() ? ' <i class="fa fa-lock"></i>' : ''); ?></a></li><?php endif; ?>
-				  <?php if(logged_user()->isOwner() || !logged_user()->isMember()) : ?><li<?php echo (isset($active_tab) && $active_tab == "invoices" ? ' class="active"': ''); ?>><a href="<?php echo get_page_base_url($project->getObjectURL('invoices')); ?>" role="tab" class="custom-cursor-pointer"><?php echo lang('c_172'); ?></a></li><?php endif; ?>
+				  <!-- <?php if(logged_user()->isOwner() || !logged_user()->isMember()) : ?><li<?php echo (isset($active_tab) && $active_tab == "invoices" ? ' class="active"': ''); ?>><a href="<?php echo get_page_base_url($project->getObjectURL('invoices')); ?>" role="tab" class="custom-cursor-pointer"><?php echo lang('c_172'); ?></a></li><?php endif; ?> -->
 				  <li<?php echo (isset($active_tab) && $active_tab == "notes" ? ' class="active"': ''); ?>><a href="<?php echo get_page_base_url($project->getObjectURL('notes')); ?>" role="tab" class="custom-cursor-pointer"><?php echo lang('c_284'); ?></a></li>
 				  <li<?php echo (isset($active_tab) && $active_tab == "activity" ? ' class="active"': ''); ?>><a href="<?php echo get_page_base_url($project->getObjectURL('activity')); ?>" role="tab" class="custom-cursor-pointer"><?php echo lang('c_22'); ?></a></li>
 				</ul>
@@ -652,7 +652,9 @@ echo (isset($title_for_layout) ? $title_for_layout : ''); ?></title>
   </div>
 
   <footer class="main-footer">
-	  Copyright <?php echo date("Y"); ?> &copy; <strong><?php echo config_option("site_name", "Project Management System"); ?>.</strong> All rights reserved.
+	  Copyright <?php echo date("Y"); ?> &copy; 
+	  <strong>Klipspruit
+	  </strong> All rights reserved.
   </footer>
 
   <div class="control-sidebar-bg"></div>
