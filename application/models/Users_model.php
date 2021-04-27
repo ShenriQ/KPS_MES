@@ -333,13 +333,13 @@ class User extends Application_object {
 			
 			if($this->isOwner()) {
 
-				$arguments = array('conditions' => array('is_trashed = ? AND completed_at = ?', false, '2021/01/01 00:00:00'));
+				$arguments = array('conditions' => array('is_trashed = ? AND completed_at IS NULL', false));
 				$this->active_projects = $this->CI_instance()->Projects->find($arguments);			
 
 			} else {
 
 				$projects_table = $this->CI_instance()->Projects->getTableName(true);
-				$this->active_projects = $this->CI_instance()->Projects->getByUser($this, array($projects_table.'.is_trashed = ? AND '.$projects_table.'.completed_at = ?', false, '2021/01/01 00:00:00'));
+				$this->active_projects = $this->CI_instance()->Projects->getByUser($this, array($projects_table.'.is_trashed = ? AND '.$projects_table.'.completed_at IS NULL', false));
 			
 			}
 			
@@ -392,13 +392,13 @@ class User extends Application_object {
 
 			if($this->isOwner()) {
 
-				$arguments = array('conditions' => array('is_trashed = ? AND completed_at > ?', false, '2021/01/01 00:00:00'));
+				$arguments = array('conditions' => array('is_trashed = ? AND completed_at IS NOT NULL', false ));
 				$this->completed_projects = $this->CI_instance()->Projects->find($arguments);			
 
 			} else {
 
 				$projects_table = $this->CI_instance()->Projects->getTableName(true);
-				$this->completed_projects = $this->CI_instance()->Projects->getByUser($this, array($projects_table.'.is_trashed = ? AND '.$projects_table.'.completed_at > ?', false, '2021/01/01 00:00:00'));
+				$this->completed_projects = $this->CI_instance()->Projects->getByUser($this, array($projects_table.'.is_trashed = ? AND '.$projects_table.'.completed_at IS NOT NULL', false ));
 			
 			}
 			
@@ -447,8 +447,8 @@ class User extends Application_object {
 				$projects_table = $this->CI_instance()->Projects->getTableName(true);
 				$project_users_table =  $this->CI_instance()->ProjectUsers->getTableName(true);
 		
-				$this->unassigned_projects = $this->CI_instance()->Projects->getByUser($this, array($projects_table.'.is_trashed = ? AND '.$projects_table.'.completed_at = ? 
-				AND ('.$project_users_table.'.project_id IS NULL AND '.$project_users_table.'.user_id IS NULL)', false, '2021/01/01 00:00:00'), 'LEFT');
+				$this->unassigned_projects = $this->CI_instance()->Projects->getByUser($this, array($projects_table.'.is_trashed = ? AND '.$projects_table.'.completed_at IS NULL 
+				AND ('.$project_users_table.'.project_id IS NULL AND '.$project_users_table.'.user_id IS NULL)', false), 'LEFT');
 			
 			}
 			

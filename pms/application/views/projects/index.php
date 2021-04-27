@@ -141,8 +141,13 @@ tpl_assign("footer_for_layout", '
 					<li><a href="javascript:void();" data-url="<?php echo get_page_base_url($project->getManagePeopleURL()); ?>" data-toggle="commonmodal"><?php echo lang('c_254'); ?></a></li>
 					<li class="divider"></li>
 					<li><a href="javascript:void();" data-url="<?php echo get_page_base_url($project->getCompleteURL()); ?>" data-toggle="commonmodal"><?php echo lang('c_281'); ?></a></li><?php else : ?>
-					<li><a href="<?php echo get_page_base_url($project->getReopenURL()); ?>"><?php echo lang('c_282'); ?></a></li><?php endif; ?>
-
+					<li><a href="<?php echo get_page_base_url($project->getReopenURL()); ?>"><?php echo lang('c_282'); ?></a></li>
+					<?php endif; ?>
+					<li>
+						<a href="javascript:void();" data-url="<?php echo get_page_base_url($project->getDeleteURL()); ?>" data-toggle="commonmodal">
+						Move to Trash
+						</a>
+					</li>
 				</ul>
 			</div>
 		</div>

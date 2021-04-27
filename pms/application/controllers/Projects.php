@@ -396,6 +396,48 @@ class Projects extends Application_controller {
 
 	}
 
+	public function delete($id) {
+
+		if(!(logged_user()->isOwner() || logged_user()->isAdmin())) die();
+		only_ajax_request_allowed();
+	
+		$this->setLayout('modal');
+	
+		$project = $this->Projects->findById($id);
+		if(is_null($project) || $project->getIsTrashed() || $project->isCompleted() 
+		|| (logged_user()->isAdmin() && !logged_user()->isProjectUser($project)) ) {
+			set_flash_error(lang('e_3'), true);
+		}
+		
+		tpl_assign('project', $project);
+
+		$is_submited = input_post_request('submited') ==  'submited';		
+
+		if ($is_submited) {
+
+			try {
+				
+				$project->setIsTrashed(true);
+				
+				$project->save();
+
+				$target_source = logged_user()->getTargetSource();
+				$this->Projects->updateProjectsCache($target_source);
+
+				$this->ActivityLogs->create($project, 'Remove a project', 'remove', true);
+				
+				set_flash_success(sprintf(lang('c_168'), lang('c_23')));
+				
+			} catch(Exception $e) {
+				set_flash_error(lang('e_1'));
+			}
+
+			$this->renderText(output_ajax_request(true));
+			
+		}
+
+	}
+
 	public function reopen($id) {
 
 		if(!(logged_user()->isOwner() || logged_user()->isAdmin())) redirect("dashboard");

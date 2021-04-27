@@ -905,7 +905,7 @@ if (!function_exists('db_prepare_conditions')) {
 		$prepared_conditions = str_replace("", "", $prepared_conditions);
 
 		if (strpos($prepared_conditions, 'NULL')) {
-			var_dump($prepared_conditions);
+			// var_dump($prepared_conditions);
 		}
 		return $prepared_conditions;
 	

@@ -33,8 +33,8 @@ class Projects_model extends Application_model {
 	}
 
 	public function allProjectsCount() { 
-		return $this->count(array('target_source_id = ? AND is_trashed = ? AND completed_at = ?', 
-		get_target_source_id(), false, '2021-01-01T00:00:00'));
+		return $this->count(array('target_source_id = ? AND is_trashed = ? AND completed_at IS NULL', 
+		get_target_source_id(), false));
     }
 
 	public function getAll() {
@@ -42,7 +42,7 @@ class Projects_model extends Application_model {
 	}
 
 	public function getOverdues($project_ids) {
-		return $this->find(array('conditions' => array('is_trashed = ? AND completed_at = ? AND id IN (?) AND due_date < GETDATE()', false, '2021-01-01T00:00:00', $project_ids), 'order' => 'id'));
+		return $this->find(array('conditions' => array('is_trashed = ? AND completed_at IS NULL AND id IN (?) AND due_date < GETDATE()', false, $project_ids), 'order' => 'id'));
 	}
 		
 }
