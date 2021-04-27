@@ -48,8 +48,8 @@ class SearchableObjects_model extends Application_model {
 
 	private function getSearchConditions($search_terms, $model = null, $project_ids = null, $time_period = null, $include_private = false) {
 
-		$conditions = ['MATCH (field_content) AGAINST (? IN BOOLEAN MODE) AND target_source_id = ?'];
-		$values = [$search_terms, get_target_source_id()];
+		$conditions = ['"field_content" LIKE '."'%".$search_terms."%'".' AND target_source_id = ?'];
+		$values = [get_target_source_id()];
 
 		$models = $this->getModels();
 		if(isset($model) && isset($models[$model])) {
@@ -104,7 +104,7 @@ class SearchableObjects_model extends Application_model {
 		$limit_string = '';
 		if((integer) $limit > 0) {
 			$offset = (integer) $offset > 0 ? (integer) $offset : 0;
-			$limit_string = " LIMIT $offset, $limit";
+			$limit_string = "ORDER BY model OFFSET $offset ROWS FETCH NEXT $limit ROWS ONLY";
 		}
 
 		$query = $this->db->query("SELECT DISTINCT model, object_id FROM $searchable_objects_table $where $limit_string");
