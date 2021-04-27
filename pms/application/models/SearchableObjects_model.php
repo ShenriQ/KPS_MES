@@ -12,7 +12,8 @@ class SearchableObjects_model extends Application_model {
 		"files" => "ProjectFiles",
 		"task_lists" => "ProjectTaskLists",
 		"tasks" => "ProjectTasks",
-		"tickets" => "Tickets"
+		"tickets" => "Tickets",
+		"projects" => "Projects"
 	];
 
 	private $member_models = [
@@ -106,7 +107,8 @@ class SearchableObjects_model extends Application_model {
 			$offset = (integer) $offset > 0 ? (integer) $offset : 0;
 			$limit_string = "ORDER BY model OFFSET $offset ROWS FETCH NEXT $limit ROWS ONLY";
 		}
-
+	
+		// var_dump("SELECT DISTINCT model, object_id FROM $searchable_objects_table $where $limit_string");
 		$query = $this->db->query("SELECT DISTINCT model, object_id FROM $searchable_objects_table $where $limit_string");
 		$result = $query->result();
 		if(!is_array($result)) return null;
