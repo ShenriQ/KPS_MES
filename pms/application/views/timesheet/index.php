@@ -162,22 +162,25 @@ if(isset($timelogs) && is_array($timelogs) && count($timelogs)) {
 		</div>
 
 		<div class="col-lg-9 col-md-12">
-			<div class="col-sm-3 text-right">
-				<h4><?php echo lang('c_523.21'); ?> <small>(<?php echo lang('c_523.35'); ?>)</small></h4>
-				<h3><?php echo number_format($total_hours, 2); ?> <small>(<?php echo number_format($total_billable_hours, 2); ?>)</small></h3>
+			<div class="col-sm-4 text-right">
+				<h4><?php echo lang('c_523.21'); ?> <small></small></h4>
+				<h3><?php echo number_format($total_hours, 2); ?> 
+				<small></small></h3>
 			</div>
-			<div class="col-sm-3 text-right">
-				<h4><?php echo lang('c_523.19'); ?> <small>(<?php echo lang('c_523.35'); ?>)</small></h4>
-				<h3 class="custom-color-red"><?php echo number_format($pending_hours, 2); ?> <small>(<?php echo number_format($pending_billable_hours, 2); ?>)</small></h3>
+			<div class="col-sm-4 text-right">
+				<h4><?php echo lang('c_523.19'); ?> <small></small></h4>
+				<h3 class="custom-color-red"><?php echo number_format($pending_hours, 2); ?> <small>
+				</small></h3>
 			</div>
-			<div class="col-sm-3 text-right">
-				<h4><?php echo lang('c_523.20'); ?> <small>(<?php echo lang('c_523.35'); ?>)</small></h4>
-				<h3><?php echo number_format($approved_hours, 2); ?> <small>(<?php echo number_format($approved_billable_hours, 2); ?>)</small></h3>
+			<div class="col-sm-4 text-right">
+				<h4><?php echo lang('c_523.20'); ?> <small></small></h4>
+				<h3><?php echo number_format($approved_hours, 2); ?> <small>
+				</small></h3>
 			</div>
-			<div class="col-sm-3 text-right">
+			<!-- <div class="col-sm-3 text-right">
 				<h4><?php echo lang('c_523.37'); ?> <small>(<?php echo lang('c_523.38'); ?>)</small></h4>
 				<h3 class="custom-color-green"><?php echo $total_paid_hours; ?> <small>(<?php echo $total_pending_hours; ?>)</small></h3>
-			</div>
+			</div> -->
 		</div>
 		
 	</div>
@@ -195,7 +198,7 @@ if(isset($timelogs) && is_array($timelogs) && count($timelogs)) {
 			<th width="15%"><?php echo lang('c_183'); ?></th>
 			<th><?php echo lang('c_366'); ?></th>
 			<th><?php echo lang('c_523.17'); ?></th>
-			<th><?php echo lang('c_523.34'); ?></th>
+			<!-- <th><?php echo lang('c_523.34'); ?></th> -->
 			<th><?php echo lang('c_205'); ?></th>
 			<?php if(logged_user()->isOwner()) : ?>
 				<th><?php echo lang('c_204'); ?></th>
@@ -226,8 +229,12 @@ if(isset($timelogs) && is_array($timelogs) && count($timelogs)) {
 					<?php if (!is_null($timlog_task)): ?><h5><a href="<?php echo base_url($timlog_task->getObjectURL()); ?>"><?php echo $timlog_task->getName(); ?></a></h5><?php else: ?>&mdash;<?php endif; ?>
 				</td>				
 				
-				<td><h4 class="custom-m-0"><?php echo round(($timelog->getEndTime()-$timelog->getStartTime())/3600, 2); ?> <?php echo lang('c_313'); ?> &mdash; <?php echo ($timelog->getIsApproved() ? '<small class="custom-color-green">'.lang('c_362').'</small>' : '<small class="custom-color-red">'.lang('c_363').'</small>'); ?></h4><br>
-					<p><small><b><?php echo lang('c_523.31'); ?>:</b> <?php echo config_option('default_currency', "$") . $timelog->getHourlyRate(); ?></small></p>
+				<td>
+				<h4 class="custom-m-0"><?php echo round(($timelog->getEndTime()-$timelog->getStartTime())/3600, 2); ?> <?php echo lang('c_313'); ?> &mdash; <?php echo ($timelog->getIsApproved() ? '<small class="custom-color-green">'.lang('c_362').'</small>' : '<small class="custom-color-red">'.lang('c_363').'</small>'); ?></h4><br>
+					<!-- <p><small><b>
+					<?php echo lang('c_523.31'); ?>:</b> 
+					<?php echo config_option('default_currency', "$") . $timelog->getHourlyRate(); ?>
+					</small></p> -->
 					<p><small><b><?php echo lang('c_368'); ?>: </b><?php echo format_date($timelog->getStartTime(), "m-d-Y H:i"); ?><br>
 					<b><?php echo lang('c_369'); ?>:</b> <?php echo format_date($timelog->getEndTime(), "m-d-Y H:i"); ?><br>
 					<br><?php echo $timelog->getMemo(); ?></small></p>
@@ -237,10 +244,10 @@ if(isset($timelogs) && is_array($timelogs) && count($timelogs)) {
 					<?php echo $timelog->getIsTimer() ? lang('c_523.13') : lang('c_523.14') ;?>
 				</td>
 				
-				<td>
+				<!-- <td>
 					<?php $invoice_status_code = $timelog->getIsBillable() ? $timelog->getInvoiceStatusCode() : 0;
 					echo $timelog->getIsBillable() ? '<b>' . lang('c_523.35.'.$invoice_status_code) . '</b>' : lang('c_523.36'); ?>
-				</td>
+				</td> -->
 
 				<td><?php echo format_date($timelog->getCreatedAt(), "m-d-Y"); ?></td>
 				

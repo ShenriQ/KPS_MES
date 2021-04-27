@@ -68,7 +68,7 @@ class ProjectTimelogs_model extends Application_model {
 		
 		$query = $this->db->query("SELECT SUM(total_hours) AS summary, member_id, project_id FROM ".$project_timelogs_table."
 		WHERE is_approved = 1".(isset($start) && isset($end) ? " AND CONVERT(datetime,  created_at) BETWEEN '$start' AND '$end'" : "")." 
-		AND member_id IN (".implode(",", $user_ids).") AND target_source_id = ".get_target_source_id()." GROUP BY member_id, project_id HAVING summary > 0");
+		AND member_id IN (".implode(",", $user_ids).") AND target_source_id = ".get_target_source_id()." GROUP BY member_id, project_id ");
 		
 		return $query->result();
 

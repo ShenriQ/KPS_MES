@@ -82,7 +82,7 @@ tpl_assign("title_for_layout", lang('c_182')); ?>
 	</div>
 	
 </div>
-
+<!-- 
 <div class="box box-solid">
 
 	<div class="box-header with-border">
@@ -219,6 +219,6 @@ tpl_assign("title_for_layout", lang('c_182')); ?>
 	<?php echo lang('e_2'); ?>
 	<?php endif; ?>
 
-</div>
+</div> 
 
-</div>
+</div>-->

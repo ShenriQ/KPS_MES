@@ -275,7 +275,7 @@ endif; ?>
 </div>
 
 <?php if(logged_user()->isOwner() || logged_user()->isAdmin()) : ?>
-
+<!-- 
 <div class="row">
 <div class="col-md-12">
   <div class="box">
@@ -336,7 +336,7 @@ endif; ?>
 
 </div>
 
-</div>	  
+</div>	   -->
 
 <?php endif; ?>
 
@@ -532,7 +532,7 @@ endif; ?>
 	</div>
 	</div>
 
-	<div class="box">
+	<!-- <div class="box">
 	<div class="box-header">
 	  <h3 class="box-title"><?php echo lang('c_102'); ?></h3>
 	  <div class="box-tools pull-right">
@@ -572,7 +572,7 @@ endif; ?>
 	  </div>
 	</div>
 	</div>
-			
+			 -->
 	<?php endif; ?>
 
 

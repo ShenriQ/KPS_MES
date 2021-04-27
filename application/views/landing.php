@@ -70,9 +70,9 @@ echo (isset($title_for_layout) ? $title_for_layout : ''); ?></title>
                 <img src='<?php echo base_url();?>public/assets/images/landing/icons8-home-50.png' />
                 <span>Home</span>
             </button>
-            <button class="btn">
+            <a class="btn" href="sysadmin">
                 <img src='<?php echo base_url();?>public/assets/images/landing/icons8-settings-24.png' />
-            </button>
+            </a>
         </header>
 
         <div class="landing-body">

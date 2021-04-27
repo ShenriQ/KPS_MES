@@ -55,7 +55,11 @@ echo select_box("project_id", $projects_options, $project_id, (!$project_timelog
 
 <?php endif; ?>
 
-<label><input name="is_billable" type="checkbox"<?php echo ($is_billable ? ' checked="checked"' : ''); ?> /> <?php echo lang('c_523.32'); ?> <small class="custom-backgound-lightyellow-underline"><?php echo lang('c_523.29'); ?></small></label>
+<label style="display : none;">
+<input name="is_billable" type="checkbox"<?php echo ($is_billable ? ' checked="checked"' : ''); ?> /> 
+<?php echo lang('c_523.32'); ?> <small class="custom-backgound-lightyellow-underline">
+<?php echo lang('c_523.29'); ?></small>
+</label>
 
 <input type="hidden" name="submited" value="submited" />
 

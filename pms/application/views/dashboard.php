@@ -343,7 +343,7 @@ echo (isset($title_for_layout) ? $title_for_layout : ''); ?></title>
 		    </ul>
 			
 		</li> -->
-
+<!-- 
 		<li class="treeview<?php echo ($this->router->fetch_class() == 'leads' || $this->router->fetch_class() == 'leadssources' || $this->router->fetch_class() == 'leadsstatuses' || $this->router->fetch_class() == 'forms' ? ' active ' : ''); ?>">
 		   <a href="#"><i class="fa fa-briefcase fa-fw"></i> <span><?php echo lang('c_455'); ?></span>
 			<span class="pull-right-container">
@@ -369,15 +369,15 @@ echo (isset($title_for_layout) ? $title_for_layout : ''); ?></title>
 
 		    </ul>
 			
-		</li>
+		</li> -->
 
-		<?php elseif(!logged_user()->isMember()) : ?>
+		<!-- <?php elseif(!logged_user()->isMember()) : ?>
 
 			<li<?php echo ($this->router->fetch_class() == 'tickets' ? ' class="active"' : ''); ?>>
 				<a href="<?php echo get_page_base_url('tickets'); ?>"><i class="fa fa-ticket fa-fw"></i> <span><?php echo lang('c_295'); ?></span></a>
 			</li>					
 
-		<?php endif; ?>
+		<?php endif; ?> -->
 
 		<?php if(logged_user()->isOwner()) : ?>
 
@@ -392,9 +392,9 @@ echo (isset($title_for_layout) ? $title_for_layout : ''); ?></title>
 					<li<?php echo ($this->router->fetch_method() == 'members' ? ' class="active"' : ''); ?>>
 						<a href="<?php echo get_page_base_url('people/members'); ?>"> <span><?php echo lang('c_200'); ?></span></a>
 					</li>					
-					<li<?php echo ($this->router->fetch_method() == 'clients' ? ' class="active"' : ''); ?>>
+					<!-- <li<?php echo ($this->router->fetch_method() == 'clients' ? ' class="active"' : ''); ?>>
 						<a href="<?php echo get_page_base_url('people/clients'); ?>"<?php echo ($this->router->fetch_class() == 'people' && $this->router->fetch_method() == 'clients' ? ' class="waves-effect active"' : ''); ?>> <span><?php echo lang('c_199'); ?></span></a>
-					</li>					
+					</li>					 -->
 
 					<li<?php echo ($this->router->fetch_class() == 'archive' ? ' class="active"' : ''); ?>>
 						<a href="<?php echo get_page_base_url('archive'); ?>"> <span><?php echo lang('c_26'); ?></span></a>
@@ -414,7 +414,7 @@ echo (isset($title_for_layout) ? $title_for_layout : ''); ?></title>
 				<a href="<?php echo get_page_base_url('transactions'); ?>"><i class="fa fa-book fa-fw"></i> <span><?php echo lang('c_375'); ?></span></a>
 			</li>						 -->
 								
-		<?php elseif(!logged_user()->isMember()) : ?>
+		<!-- <?php elseif(!logged_user()->isMember()) : ?>
 
 			<li<?php echo ($this->router->fetch_class() == 'invoices' ? ' class="active"' : ''); ?>>
 				<a href="<?php echo get_page_base_url('invoices'); ?>"><i class="fa fa-money fa-fw"></i> <span><?php echo lang('c_172'); ?></span></a>
@@ -424,7 +424,7 @@ echo (isset($title_for_layout) ? $title_for_layout : ''); ?></title>
 				<a href="<?php echo get_page_base_url('estimates'); ?>"><i class="fa fa-files-o fa-fw"></i> <span><?php echo lang('c_150'); ?></span></a>
 			</li>					
 		
-		<?php endif; ?>
+		<?php endif; ?> -->
 		
 		<?php if(logged_user()->isOwner()) : ?>
 
@@ -436,9 +436,9 @@ echo (isset($title_for_layout) ? $title_for_layout : ''); ?></title>
 			</a>
 			<ul class="treeview-menu">
 					
-				<li<?php echo ($this->router->fetch_class() == 'reports' && $this->router->fetch_method() == 'index' ? ' class="active"' : ''); ?>>
+				<!-- <li<?php echo ($this->router->fetch_class() == 'reports' && $this->router->fetch_method() == 'index' ? ' class="active"' : ''); ?>>
 					<a href="<?php echo get_page_base_url('reports/index'); ?>"> <span><?php echo lang('c_303'); ?></span></a>
-				</li>					
+				</li>					 -->
 			
 				<li<?php echo ($this->router->fetch_method() == 'time_tracking' ? ' class="active"' : ''); ?>>
 					<a href="<?php echo get_page_base_url('reports/time_tracking'); ?>"> <span><?php echo lang('c_311'); ?></span></a>
